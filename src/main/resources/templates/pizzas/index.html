@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <title>index</title>
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <section class="container mt-4">
+        <h2>Pizza Menu</h2>
+        <table class="table table-striped" th:if="${pizzas.size() > 0}">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+                    <td><a th:href="@{/pizzas/{id}(id=*{id})}">[[*{name}]]</a></td>
+                    <td>[[*{description}]]</td>
+                    <td>[[*{price}]]$</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p th:if="${pizzas.size() == 0}" th:text="'No pizzas available on the menu at the moment.'"></p>
+    </section>
+</body>
+
+</html>
