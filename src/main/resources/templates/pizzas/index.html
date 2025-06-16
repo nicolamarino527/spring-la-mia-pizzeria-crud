@@ -29,6 +29,10 @@
             </tbody>
         </table>
 
+        <div class="mb-3 d-flex">
+            <a th:href="@{/pizzas/create}" class="me-auto btn btn-primary btn-sm"> Add a new pizza</a>
+        </div>
+
         <p th:if="${pizzas.size() == 0}" th:text="'No pizzas available on the menu at the moment.'"></p>
     </section>
 </body>
