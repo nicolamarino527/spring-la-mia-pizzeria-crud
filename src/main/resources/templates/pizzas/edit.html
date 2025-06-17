@@ -14,10 +14,12 @@
         <div class="row">
             <div class="col-12">
                 <th:block>
-                    <h1 class="py-4 mb-2 text-center">Add a new pizza</h1>
+                    <h1 class="py-4 mb-2 text-center">Update pizza info
+                    </h1>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <form id="pizza-form" th:action="@{/pizzas/create}" th:object="${pizza}" method="post">
+                            <!-- indirizziamo la rotta post -->
+                            <form th:action="@{/pizzas/edit/{id}(id=${pizza.id})}" th:object="${pizza}" method="post">
                                 <div class="mb-3">
                                     <label for="name">Name:</label>
                                     <input class="form-control" type="text" th:field="*{name}" id="name"
@@ -59,7 +61,7 @@
                                                 </ul>
                                             </div>
                                             <div class="mt-3 d-flex justify-content-between">
-                                                <input type="submit" class="btn btn-primary" value="Create new pizza">
+                                                <input type="submit" class="btn btn-primary" value="update pizza">
                                                 <input type="reset" class="btn btn-warning" value="Reset values">
                                             </div>
                             </form>
